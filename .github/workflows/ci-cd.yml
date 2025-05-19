@@ -1,26 +1,27 @@
 name: C Build CI
 
 on:
- push: 
-   branches: ["main"]
- pull_request:
-   branches: ["main"]
-   
-jobs: 
-  build: 
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
-      runs-on: ubuntu-latest
+jobs:
+  build:
 
-      steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    runs-on: ubuntu-latest
 
-      - name: Install GCC
-        run: sudo apt update && sudo apt install -y build-essential
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Build project
-        run: make
+    - name: Install GCC
+      run: sudo apt update && sudo apt install -y build-essential
 
-      - name: Run executable
-        run: ./main
+    - name: Build project
+      run: make
+
+    - name: Run executable
+      run: ./main
+
    
